@@ -1,0 +1,20 @@
+{% extends "basic_app/base.html" %}
+
+{% block bodyblock %}
+  <div class="jumbotron">
+    {% if registered %}
+      <h1>Thank you</h1>
+    {% else %}
+      <h1>Register here</h1>
+      <h3>Fill out the form</h3>
+
+      <form class="" enctype="multipart/form-data" method="post">
+        <!-- https://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean -->
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" name="" value="Register">
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}
